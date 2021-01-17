@@ -15,7 +15,7 @@ class ConceptController extends Controller
      */
     public function index()
     {
-        //
+        return view('administration.concept.index');
     }
 
     /**

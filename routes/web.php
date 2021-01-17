@@ -23,7 +23,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::resource('products', ProductController::class);
 
-Route::group(['auth:sanctum' => 'verified'], function () {
-    Route::get('administration/series', 'Admin\SeriesController@index');
-    Route::get('/admin/series/{id}', 'Admin\SeriesController@edit');
+Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'administracion',], function () {
+    Route::resource('especialidad', '\App\Http\Controllers\administration\SpecialtyController');
+    Route::resource('concepto', '\App\Http\Controllers\administration\ConceptController');
+    Route::resource('diagnostico', '\App\Http\Controllers\administration\DiagnosticController');
 });

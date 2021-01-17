@@ -250,16 +250,20 @@ return [
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'Colaboradores',
-                    'url'  => '#',
+                    'text' => 'Conceptos ing/sal',
+                    'url'  => 'administracion/concepto',
                 ],
                 [
-                    'text' => 'Conceptos in/sa',
-                    'url'  => '#',
+                    'text' => 'Colaboradores',
+                    'url'  => 'administracion/colaborador',
+                ],
+                [
+                    'text' => 'Especialidades',
+                    'url'  => 'administracion/especialidad',
                 ],
                 [
                     'text' => 'Diagnósticos',
-                    'url'  => '#',
+                    'url'  => 'administracion/diagnostico',
                 ],
             ],
         ],
@@ -347,7 +351,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -357,12 +361,27 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
+                    'location' => '//cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+                    'location' => '//cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css',
                 ],
             ],
         ],
