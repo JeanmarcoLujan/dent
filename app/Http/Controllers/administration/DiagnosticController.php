@@ -15,7 +15,8 @@ class DiagnosticController extends Controller
      */
     public function index()
     {
-        return view('administration.diagnostic.index');
+        $diagnostics = Diagnostic::all();
+        return view('administration.diagnostic.index', compact('diagnostics'));
     }
 
     /**
@@ -25,7 +26,7 @@ class DiagnosticController extends Controller
      */
     public function create()
     {
-        //
+        return view('administration.diagnostic.create');
     }
 
     /**
@@ -36,7 +37,15 @@ class DiagnosticController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'code' => 'required',
+            'description' => 'required',
+        ]);
+    
+        Diagnostic::create($request->all());
+     
+        return redirect()->route('diagnostico.index')
+                        ->with('success','El diagnóstico se ha creado con éxito.');
     }
 
     /**
@@ -56,9 +65,10 @@ class DiagnosticController extends Controller
      * @param  \App\Models\Diagnostic  $diagnostic
      * @return \Illuminate\Http\Response
      */
-    public function edit(Diagnostic $diagnostic)
+    public function edit($id)
     {
-        //
+        $diagnostic = Diagnostic::find($id);
+        return view('administration.diagnostic.edit', compact('diagnostic'));
     }
 
     /**
@@ -68,9 +78,16 @@ class DiagnosticController extends Controller
      * @param  \App\Models\Diagnostic  $diagnostic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Diagnostic $diagnostic)
+    public function update(Request $request,$id)
     {
-        //
+        $diagnostic = $request->validate([
+            'code' => 'required',
+            'description' => 'required',
+        ]);
+
+        Diagnostic::whereId($id)->update($diagnostic);
+        return redirect()->route('diagnostico.index')
+                        ->with('success','La diagnóstico se ha actualizado con éxito');
     }
 
     /**

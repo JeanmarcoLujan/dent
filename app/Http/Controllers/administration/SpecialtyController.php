@@ -26,7 +26,7 @@ class SpecialtyController extends Controller
      */
     public function create()
     {
-        //
+        return view('administration.specialty.create');
     }
 
     /**
@@ -37,7 +37,15 @@ class SpecialtyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+    
+        Specialty::create($request->all());
+     
+        return redirect()->route('especialidad.index')
+                        ->with('success','La especialidad se ha creado con éxito.');
     }
 
     /**
@@ -57,9 +65,11 @@ class SpecialtyController extends Controller
      * @param  \App\Models\Specialty  $specialty
      * @return \Illuminate\Http\Response
      */
-    public function edit(Specialty $specialty)
+    public function edit( $id)
     {
-        //
+        $specialty = Specialty::find($id);
+        return view('administration.specialty.edit', compact('specialty'));
+        
     }
 
     /**
@@ -69,9 +79,18 @@ class SpecialtyController extends Controller
      * @param  \App\Models\Specialty  $specialty
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Specialty $specialty)
+    public function update(Request $request, $id)
     {
-        //
+        $hola = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+    
+        //dd($request);
+        //$specialty->update($request->all());
+        Specialty::whereId($id)->update($hola);
+        return redirect()->route('especialidad.index')
+                        ->with('success','La especialidad se ha actualizado con éxito');
     }
 
     /**

@@ -21,7 +21,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('products', ProductController::class);
+
 
 Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'administracion',], function () {
     Route::resource('especialidad', '\App\Http\Controllers\administration\SpecialtyController');

@@ -1,17 +1,17 @@
-@extends('adminlte::page')
 
-@section('title', 'Dashboard')
 
-@section('content_header')
+<?php $__env->startSection('title', 'Dashboard'); ?>
+
+<?php $__env->startSection('content_header'); ?>
     <h1>DIAGNOSTICOS</h1>
-@stop
+<?php $__env->stopSection(); ?>
 
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('diagnostico.create') }}" title="Create a product"> <i class="fas fa-plus-circle"> Nuevo</i>
+                <a class="btn btn-success" href="<?php echo e(route('diagnostico.create')); ?>" title="Create a product"> <i class="fas fa-plus-circle"> Nuevo</i>
                     </a>
             </div>
         </div>
@@ -19,12 +19,12 @@
     <br>
     <div class="card">
         <div class="card-body">
-            @if ($message = Session::get('success'))
+            <?php if($message = Session::get('success')): ?>
                 <div class="alert alert-success">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <p>{{ $message }}</p>
+                    <p><?php echo e($message); ?></p>
                 </div>
-            @endif
+            <?php endif; ?>
             <table class="table  table-bordered table-responsive-lg" id="data-table-diagnostic">
                 <thead>
                     <tr>
@@ -35,33 +35,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($diagnostics as $d)
+                    <?php $__currentLoopData = $diagnostics; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td>{{$d->id}} </td>
-                            <td>{{$d->code}}</td>
-                            <td>{{$d->description}}</td>
+                            <td><?php echo e($d->id); ?> </td>
+                            <td><?php echo e($d->code); ?></td>
+                            <td><?php echo e($d->description); ?></td>
                             <td align="center" width="10%"> <form action="" method="POST">
-                                <a href="{{ route('diagnostico.edit',$d->id) }}" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a href="<?php echo e(route('diagnostico.edit',$d->id)); ?>" title="Editar"><i class="fas fa-edit"></i></a>
         
-                                @csrf
+                                <?php echo csrf_field(); ?>
                                 
                             </form></td>
                         </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>            
         </div>
     </div>
     
 
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('css')
+<?php $__env->startSection('css'); ?>
 
 
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('js')
+<?php $__env->startSection('js'); ?>
 
   <script>
          $('#data-table-diagnostic').DataTable({
@@ -83,4 +83,6 @@
     </script>
 
     
-@stop
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('adminlte::page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dent\resources\views/administration/diagnostic/index.blade.php ENDPATH**/ ?>

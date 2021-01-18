@@ -15,7 +15,8 @@ class ConceptController extends Controller
      */
     public function index()
     {
-        return view('administration.concept.index');
+        $concepts = Concept::all();
+        return view('administration.concept.index', compact('concepts'));
     }
 
     /**
@@ -25,7 +26,7 @@ class ConceptController extends Controller
      */
     public function create()
     {
-        //
+        return view('administration.concept.create');
     }
 
     /**
@@ -36,7 +37,17 @@ class ConceptController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'clasification'=>'required',
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+    
+        Concept::create($request->all());
+     
+        return redirect()->route('concepto.index')
+                        ->with('success','El concepto se ha creado con éxito.');
     }
 
     /**
@@ -56,9 +67,11 @@ class ConceptController extends Controller
      * @param  \App\Models\Concept  $concept
      * @return \Illuminate\Http\Response
      */
-    public function edit(Concept $concept)
+    public function edit( $id)
     {
-        //
+        $concept = Concept::find($id);
+        $types = ['INGRESO','EGRESO'];
+        return view('administration.concept.edit', compact('concept','types'));
     }
 
     /**
@@ -68,9 +81,17 @@ class ConceptController extends Controller
      * @param  \App\Models\Concept  $concept
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Concept $concept)
+    public function update(Request $request, $id)
     {
-        //
+        $concept = $request->validate([
+            'clasification'=>'required',
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+        Concept::whereId($id)->update($concept);
+        return redirect()->route('concepto.index')
+                        ->with('success','El concepto se ha actualizado con éxito');
     }
 
     /**
