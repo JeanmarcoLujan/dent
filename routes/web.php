@@ -27,4 +27,5 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'administracion',], fu
     Route::resource('especialidad', '\App\Http\Controllers\administration\SpecialtyController');
     Route::resource('concepto', '\App\Http\Controllers\administration\ConceptController');
     Route::resource('diagnostico', '\App\Http\Controllers\administration\DiagnosticController');
+    Route::resource('colaborador', '\App\Http\Controllers\administration\CollaboratorController');
 });

@@ -85,9 +85,7 @@ class SpecialtyController extends Controller
             'name' => 'required',
             'description' => 'required',
         ]);
-    
-        //dd($request);
-        //$specialty->update($request->all());
+
         Specialty::whereId($id)->update($hola);
         return redirect()->route('especialidad.index')
                         ->with('success','La especialidad se ha actualizado con éxito');
