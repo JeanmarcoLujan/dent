@@ -250,7 +250,7 @@ return [
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'Conceptos ing/sal',
+                    'text' => 'Conceptos egr/ing',
                     'url'  => 'administracion/concepto',
                 ],
                 [
@@ -303,15 +303,16 @@ return [
         ],
         ['header' => 'CONTABILIDAD'],
         [
-            'text'       => 'Ingresos',
-            'icon'       => 'fas fa-fw fa-chevron-circle-left',
-            'url'        => '#',
+            'text'       => 'Egresos',
+            'icon'       => 'fas fa-fw fa-chevron-circle-right',
+            'url'        => 'contabilidad/egreso',
         ],
         [
-            'text'       => 'Salidas',
-            'icon'       => 'fas fa-fw fa-chevron-circle-right',
-            'url'        => '#',
+            'text'       => 'Ingresos',
+            'icon'       => 'fas fa-fw fa-chevron-circle-left',
+            'url'        => 'contabilidad/ingreso',
         ],
+        
         
     ],
 

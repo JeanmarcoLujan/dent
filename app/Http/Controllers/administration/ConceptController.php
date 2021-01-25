@@ -70,7 +70,7 @@ class ConceptController extends Controller
     public function edit( $id)
     {
         $concept = Concept::find($id);
-        $types = ['INGRESO','EGRESO'];
+        $types = ['EGRESO','INGRESO'];
         return view('administration.concept.edit', compact('concept','types'));
     }
 

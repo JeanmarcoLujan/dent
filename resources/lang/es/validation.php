@@ -151,6 +151,7 @@ return [
         'description'=>'descripción',
         'code'=>'código',
         'clasification'=>'clasificación',
+        'taxdate'=> 'Fecha de documento',
     ],
 
 ];

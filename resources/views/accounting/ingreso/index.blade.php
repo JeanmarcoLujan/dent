@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>CONCEPTOS DE INGRESOS Y EGRESOS</h1>
+    <h1>INGRESOS</h1>
 @stop
 
 
@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('concepto.create') }}" title="Crear un concepto"> <i class="fas fa-plus-circle"> Nuevo</i>
+                <a class="btn btn-success" href="{{ route('ingreso.create') }}" title="Crear ingreso"> <i class="fas fa-plus-circle"> Nuevo</i>
                     </a>
             </div>
         </div>
@@ -25,48 +25,43 @@
                     <p>{{ $message }}</p>
                 </div>
             @endif
-            <table class="table  table-bordered table-responsive-lg" id="data-table-concept">
+            <table class="table  table-bordered table-responsive-lg" id="data-table-ingreso">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Clasificación</th>
-                        <th>Concepto</th>
-                        <th>Descripción</th>
+                        <th>Nro Ingreso</th>
+                        <th>F. contabilización</th>
+                        <th>F. documento</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($concepts as $c)
+                    @foreach ($ingresos as $i)
                         <tr>
-                            <td>{{$c->id}} </td>
-                            <td>{{$c->clasification}} </td>
-                            <td>{{$c->name}}</td>
-                            <td>{{$c->description}}</td>
-                            <td align="center" width="10%"> <form action="" method="POST">
-                                <a href="{{ route('concepto.edit',$c->id) }}" title="Editar"><i class="fas fa-edit"></i></a>
-        
-                                @csrf
-                                
-                            </form></td>
+                            <td>{{$i->ingreso}} </td>
+                            <td>{{$i->docdate}} </td>
+                            <td>{{$i->taxdate}}</td>
+                            <td align="center" width="10%"> 
+                                <a class="btn btn-xs btn-info" href="{{ route('ingreso.show', $i->id) }}">
+                                    Detalle
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>            
         </div>
     </div>
-    
 
 @stop
 
 @section('css')
-
 
 @stop
 
 @section('js')
 
     <script>
-         $('#data-table-concept').DataTable({
+         $('#data-table-ingreso').DataTable({
              responsive:true,
              autowidth: false,
              "language": {

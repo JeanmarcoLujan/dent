@@ -29,3 +29,10 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'administracion',], fu
     Route::resource('diagnostico', '\App\Http\Controllers\administration\DiagnosticController');
     Route::resource('colaborador', '\App\Http\Controllers\administration\CollaboratorController');
 });
+
+
+
+Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'contabilidad',], function () {
+    Route::resource('ingreso', '\App\Http\Controllers\accounting\IngresoController');
+    Route::resource('egreso', '\App\Http\Controllers\accounting\EgresoController');
+});

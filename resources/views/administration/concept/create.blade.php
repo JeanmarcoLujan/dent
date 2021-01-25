@@ -43,8 +43,8 @@
                             <strong>Clasificación</strong>
                             <select class="form-control" name ="clasification">
                               <option value="" disabled=true selected>Seleccionar</option>
+                              <option value="EGRESO">EGRESO</option>
                               <option value="INGRESO">INGRESO</option>
-                              <option value="SALIDA">EGRESO</option>
                             </select>
                         </div>
                     </div>
