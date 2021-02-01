@@ -4,6 +4,7 @@ namespace App\Http\Controllers\administration;
 
 use App\Http\Controllers\Controller;
 use App\Models\Collaborator;
+use App\Models\Specialty;
 use Illuminate\Http\Request;
 
 
@@ -27,7 +28,8 @@ class CollaboratorController extends Controller
      */
     public function create()
     {
-        return view('administration.collaborator.create');
+        $specialties = Specialty::all();
+        return view('administration.collaborator.create', compact('specialties'));
     }
 
     /**
@@ -43,9 +45,12 @@ class CollaboratorController extends Controller
             'firstname' => 'required',
             'lastname' => 'required',
             'phone'=>'required|numeric',
-            'email'=>'required',
+            'email'=>'required|email',
+            'specialty_id'=>'required',
         ]);
-    
+
+        $request->status = $request->has('status') ? 1 : 0;
+
         Collaborator::create($request->all());
      
         return redirect()->route('colaborador.index')
@@ -60,7 +65,7 @@ class CollaboratorController extends Controller
      */
     public function show(Collaborator $collaborator)
     {
-        //
+        return view('administration.collaborator.show', compact('collaborator'));
     }
 
     /**
@@ -69,9 +74,11 @@ class CollaboratorController extends Controller
      * @param  \App\Models\Collaborator  $collaborator
      * @return \Illuminate\Http\Response
      */
-    public function edit(Collaborator $collaborator)
+    public function edit($id)
     {
-        //
+        $collaborator = Collaborator::find($id);
+        $specialties = Specialty::all();
+        return view('administration.collaborator.edit', compact('collaborator','specialties'));
     }
 
     /**
@@ -81,9 +88,23 @@ class CollaboratorController extends Controller
      * @param  \App\Models\Collaborator  $collaborator
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Collaborator $collaborator)
+    public function update(Request $request,$id)
     {
-        //
+        $hola = $request->validate([
+            'dni'=>'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'phone'=>'required|numeric',
+            'email'=>'required|email',
+            'specialty_id'=>'required',
+        ]);
+
+        
+        $hola['status']=$request->status = $request->has('status') ? 1 : 0;
+
+        Collaborator::whereId($id)->update($hola);
+        return redirect()->route('colaborador.index')
+                        ->with('success','El colaborador se ha actualizado con éxito');
     }
 
     /**

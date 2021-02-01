@@ -28,20 +28,20 @@
             <table class="table  table-bordered table-responsive-lg" id="data-table-concept">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th>DNI</th>
                         <th>Nombres</th>
                         <th>Apellidos</th>
-                        <th>Teléfono</th>
+                        <th>Estado</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($collaborators as $c)
                         <tr>
-                            <td>{{$c->id}} </td>
+                            <td>{{$c->dni}} </td>
                             <td>{{$c->firstname}} </td>
                             <td>{{$c->lastname}}</td>
-                            <td>{{$c->phone}}</td>
+                            <td>@if ($c->status === 1) Activo @else Inactivo @endif</td>
                             <td align="center" width="10%"> <form action="" method="POST">
                                 <a href="{{ route('colaborador.edit',$c->id) }}" title="Editar"><i class="fas fa-edit"></i></a>
         

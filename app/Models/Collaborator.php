@@ -19,7 +19,8 @@ class Collaborator extends Model
         'lastname',
         'phone',
         'email',
-        'status'
+        'status',
+        'specialty_id'
     ];
 
     public function specialty(){ //$libro->categoria->nombre

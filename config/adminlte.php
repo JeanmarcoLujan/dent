@@ -240,11 +240,11 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
+       /* [
             'text' => 'Cambio de contraseña',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
-        ],
+        ],*/
         [
             'text'    => 'Información',
             'icon'    => 'fas fa-fw fa-share',

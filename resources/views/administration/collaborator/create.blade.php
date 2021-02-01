@@ -38,54 +38,54 @@
                 @csrf
         
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-6 col-sm-12 col-md-6">
                         <div class="form-group">
                             <strong>Documento de identidad (DNI):</strong>
-                            <input type="text" name="dni" value="{{ old('dni') }}" class="form-control" placeholder="Documento de identidad (DNI)">
+                            <input type="text" name="dni" value="{{ old('dni') }}" class="form-control" placeholder="DNI">
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-6 col-sm-12 col-md-6">
+                        <div class="form-group">
+                            <strong>Especialidad</strong>
+                            <select class="form-control" name ="specialty_id">
+                                <option value="" disabled=true selected>Seleccionar</option>
+                                @foreach ($specialties as $s)
+                                    <option value="{{$s->id}}">{{$s->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-12 col-md-6">
                         <div class="form-group">
                             <strong>Nombres:</strong>
                             <input type="text" name="firstname" value="{{ old('firstname') }}" class="form-control" placeholder="Nombres">
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-6 col-sm-12 col-md-6">
                         <div class="form-group">
                             <strong>Apellidos:</strong>
                             <input type="text" name="lastname" value="{{ old('lastname') }}" class="form-control" placeholder="Apellidos">
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-6 col-sm-12 col-md-6">
                         <div class="form-group">
                             <strong>Teléfono:</strong>
                             <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="Teléfono">
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-6 col-sm-12 col-md-6">
                         <div class="form-group">
                             <strong>Correo eléctronico:</strong>
                             <input type="text" name="email" value="{{ old('email') }}" class="form-control" placeholder="Correo eléctronico">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Clasificación</strong>
-                            <select class="form-control" name ="clasification">
-                              <option value="" disabled=true selected>Seleccionar</option>
-                              <option value="INGRESO">INGRESO</option>
-                              <option value="SALIDA">EGRESO</option>
-                            </select>
+                        <div class="checkbox checkbox-success">
+                            <input name="status"  type="checkbox" value="1">
+                            <label for="1" style="padding-left: 15px!important;">Activo</label>
                         </div>
                     </div>
                     
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Descripción:</strong>
-                            <textarea class="form-control" style="height:50px" name="description"
-                                placeholder="Descripción"> {{ old('description') }}</textarea>
-                        </div>
-                    </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-right">
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
