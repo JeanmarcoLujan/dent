@@ -262,6 +262,10 @@ return [
                     'url'  => 'administracion/especialidad',
                 ],
                 [
+                    'text' => 'Exámenes auxiliares',
+                    'url'  => 'administracion/examen',
+                ],
+                [
                     'text' => 'Diagnósticos',
                     'url'  => 'administracion/diagnostico',
                 ],
@@ -279,6 +283,10 @@ return [
                 
                 [
                     'text' => 'Exámenes de ingreso',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Índice de higiene oral',
                     'url'  => '#',
                 ],
                 [

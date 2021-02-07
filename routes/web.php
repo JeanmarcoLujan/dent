@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'administracion',], fu
     Route::resource('concepto', '\App\Http\Controllers\administration\ConceptController');
     Route::resource('diagnostico', '\App\Http\Controllers\administration\DiagnosticController');
     Route::resource('colaborador', '\App\Http\Controllers\administration\CollaboratorController');
+    Route::resource('examen', '\App\Http\Controllers\administration\ExamController');
 });
 
 
@@ -36,3 +37,8 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'contabilidad',], func
     Route::resource('ingreso', '\App\Http\Controllers\accounting\IngresoController');
     Route::resource('egreso', '\App\Http\Controllers\accounting\EgresoController');
 });
+
+
+
+
+
