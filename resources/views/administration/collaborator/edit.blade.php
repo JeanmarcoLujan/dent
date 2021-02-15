@@ -19,7 +19,7 @@
     <div class="card">
         <div class="card-body">
             <div class="pull-left">
-                <h3>Editar</h3>
+                <h4>Editar</h4><hr>
             </div>
 
             @if ($errors->any())
@@ -33,7 +33,6 @@
                     </ul>
                 </div>
             @endif
-            <br>
             <form action="{{ route('colaborador.update',$collaborator->id) }}" method="POST" >
                 @csrf
                 @method('PUT')

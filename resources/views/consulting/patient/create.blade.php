@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>COLABORADORES</h1>
+    <h1>PACIENTES</h1>
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
         <div class="col-lg-12 margin-tb">
             
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('colaborador.index') }}" title="Atrás"> <i class="fas fa-backward "></i> </a>
+                <a class="btn btn-primary" href="{{ route('paciente.index') }}" title="Atrás"> <i class="fas fa-backward "></i> </a>
             </div>
         </div>
     </div>
@@ -19,7 +19,8 @@
     <div class="card">
         <div class="card-body">
             <div class="pull-left">
-                <h4>Nuevo</h4><hr>
+                <h4>Nuevo</h4>
+                <hr>
             </div>
         
             @if ($errors->any())
@@ -33,7 +34,8 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ route('colaborador.store') }}" method="POST" >
+
+            <form action="{{ route('paciente.store') }}" method="POST" >
                 @csrf
         
                 <div class="row">
@@ -44,14 +46,14 @@
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-12 col-md-6">
-                        <div class="form-group">
-                            <strong>Especialidad</strong>
-                            <select class="form-control" name ="specialty_id">
-                                <option value="" disabled=true selected>Seleccionar</option>
-                                @foreach ($specialties as $s)
-                                    <option value="{{$s->id}}">{{$s->name}}</option>
-                                @endforeach
-                            </select>
+                        <strong>Sexo:</strong><br>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="sex" id="sexM"  value="M" checked>
+                          <label class="form-check-label" for="sexM">Masculino</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="sex" id="sexF" value="F">
+                          <label class="form-check-label" for="sexF" >Femenino</label>
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-12 col-md-6">
@@ -68,6 +70,18 @@
                     </div>
                     <div class="col-xs-6 col-sm-12 col-md-6">
                         <div class="form-group">
+                            <strong>Dirección:</strong>
+                            <input type="text" name="address" value="{{ old('address') }}" class="form-control" placeholder="Dirección">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-12 col-md-6">
+                        <div class="form-group">
+                            <strong>Fecha de nacimiento:</strong>
+                            <input type="date" name="birth" value="{{ old('birth') }}" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-12 col-md-6">
+                        <div class="form-group">
                             <strong>Teléfono:</strong>
                             <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="Teléfono">
                         </div>
@@ -79,9 +93,9 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="checkbox checkbox-success">
-                            <input name="status"  type="checkbox" value="1">
-                            <label for="1" style="padding-left: 15px!important;">Activo</label>
+                        <div class="form-group">
+                            <strong>Apoderado:</strong>
+                            <input type="text" name="apoderado" value="{{ old('apoderado') }}" class="form-control" placeholder="Apoderado">
                         </div>
                     </div>
                     

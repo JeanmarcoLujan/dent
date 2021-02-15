@@ -15,6 +15,8 @@ class CreateEntryDetailsTable extends Migration
     {
         Schema::create('entry_details', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('exam_id');
+            $table->integer('values')
             $table->timestamps();
         });
     }

@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Yuly</b>Dent',
+    'logo' => '<b>Luminous</b>Dent',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Yuly Dent',
+    'logo_img_alt' => 'Luminous Dent',
 
     /*
     |--------------------------------------------------------------------------
@@ -226,7 +226,7 @@ return [
     'menu' => [
         [
             'text' => 'search',
-            'search' => true,
+            'search' => false,
             'topnav' => true,
         ],
         [
@@ -278,7 +278,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Datos generales',
-                    'url'  => '#',
+                    'url'  => 'consultoria/paciente',
                 ],
                 
                 [
@@ -395,7 +395,7 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

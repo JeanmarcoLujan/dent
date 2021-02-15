@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('dashboard');
-});
+})->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -38,6 +39,9 @@ Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'contabilidad',], func
     Route::resource('egreso', '\App\Http\Controllers\accounting\EgresoController');
 });
 
+Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'consultoria',], function () {
+    Route::resource('paciente', '\App\Http\Controllers\consulting\PatientController');
+});
 
 
 

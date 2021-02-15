@@ -41,7 +41,7 @@ class CollaboratorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'dni'=>'required',
+            'dni'=>'required|unique:collaborators',
             'firstname' => 'required',
             'lastname' => 'required',
             'phone'=>'required|numeric',
@@ -91,7 +91,6 @@ class CollaboratorController extends Controller
     public function update(Request $request,$id)
     {
         $hola = $request->validate([
-            'dni'=>'required',
             'firstname' => 'required',
             'lastname' => 'required',
             'phone'=>'required|numeric',

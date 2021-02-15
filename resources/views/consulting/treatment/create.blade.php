@@ -19,7 +19,7 @@
     <div class="card">
         <div class="card-body">
             <div class="pull-left">
-                <h4>Nuevo</h4><hr>
+                <h3>Nuevo</h3>
             </div>
         
             @if ($errors->any())
@@ -33,6 +33,7 @@
                     </ul>
                 </div>
             @endif
+            <br>
             <form action="{{ route('colaborador.store') }}" method="POST" >
                 @csrf
         

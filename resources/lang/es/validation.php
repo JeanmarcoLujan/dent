@@ -151,7 +151,15 @@ return [
         'description'=>'descripción',
         'code'=>'código',
         'clasification'=>'clasificación',
-        'taxdate'=> 'Fecha de documento',
+        'taxdate'=> 'fecha de documento',
+        'birth' => 'fecha de nacimiento',
+        'sex'=> 'Sexo',
+        'phone'=> 'teléfono o celular',
+        'email'=> 'correo electrónico',
+        'firstname'=> 'nombres',
+        'lastname'=> 'apellidos',
+        'specialty_id'=>'especialidad',
+        'dni'=>'DNI',
     ],
 
 ];

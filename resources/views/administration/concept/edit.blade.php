@@ -19,9 +19,9 @@
     <div class="card">
         <div class="card-body">
             <div class="pull-left">
-                <h3>Editar</h3>
+                <h4>Editar</h4>
             </div>
-        
+            <hr>
             @if ($errors->any())
                 <div class="alert alert-danger alert-dismissable" >
                     <strong>Error!</strong> 
@@ -33,7 +33,6 @@
                     </ul>
                 </div>
             @endif
-            <br>
             <form action="{{ route('concepto.update',$concept->id) }}"  method="POST" >
                 @csrf
                 @method('PUT')

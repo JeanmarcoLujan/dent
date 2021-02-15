@@ -14,7 +14,13 @@ class CreateEntriesTable extends Migration
     public function up()
     {
         Schema::create('entries', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('entry', 15)->unique();
+            $table->date('entrydate');
+            $table->string('antecedente', 255)->nullable();
+            $table->string('motivo', 255)->nullable();
+            $table->string('descripcion', 255)->nullable();
+            $table->unsignedInteger('patient_id');
             $table->timestamps();
         });
     }

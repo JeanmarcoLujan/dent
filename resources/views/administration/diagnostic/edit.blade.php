@@ -19,8 +19,8 @@
     <div class="card">
         <div class="card-body">
             <div class="pull-left">
-                <h3>Editar</h3>
-            </div>
+                <h4>Editar</h4>
+            </div><hr>
         
             @if ($errors->any())
                 <div class="alert alert-danger alert-dismissable" >
@@ -33,7 +33,6 @@
                     </ul>
                 </div>
             @endif
-            <br>
             <form action="{{ route('diagnostico.update',$diagnostic->id) }}"  method="POST" >
                 @csrf
                 @method('PUT')

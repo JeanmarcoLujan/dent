@@ -19,9 +19,9 @@
     <div class="card">
         <div class="card-body">
             <div class="pull-left">
-                <h4>Nuevo</h4><hr>
+                <h3>Editar</h3>
             </div>
-        
+
             @if ($errors->any())
                 <div class="alert alert-danger alert-dismissable" >
                     <strong>Error!</strong> 
@@ -33,14 +33,15 @@
                     </ul>
                 </div>
             @endif
-            <form action="{{ route('colaborador.store') }}" method="POST" >
+            <br>
+            <form action="{{ route('colaborador.update',$collaborator->id) }}" method="POST" >
                 @csrf
-        
+                @method('PUT')
                 <div class="row">
                     <div class="col-xs-6 col-sm-12 col-md-6">
                         <div class="form-group">
                             <strong>Documento de identidad (DNI):</strong>
-                            <input type="text" name="dni" value="{{ old('dni') }}" class="form-control" placeholder="DNI">
+                            <input type="text" readonly="true" name="dni" value="{{$collaborator->dni}}" class="form-control" placeholder="DNI">
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-12 col-md-6">
@@ -49,7 +50,7 @@
                             <select class="form-control" name ="specialty_id">
                                 <option value="" disabled=true selected>Seleccionar</option>
                                 @foreach ($specialties as $s)
-                                    <option value="{{$s->id}}">{{$s->name}}</option>
+                                    <option value="{{$s->id}}" @if($collaborator->specialty_id === $s->id) selected='selected' @endif>{{$s->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -57,36 +58,40 @@
                     <div class="col-xs-6 col-sm-12 col-md-6">
                         <div class="form-group">
                             <strong>Nombres:</strong>
-                            <input type="text" name="firstname" value="{{ old('firstname') }}" class="form-control" placeholder="Nombres">
+                            <input type="text" name="firstname" value="{{ $collaborator->firstname }}" class="form-control" placeholder="Nombres">
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-12 col-md-6">
                         <div class="form-group">
                             <strong>Apellidos:</strong>
-                            <input type="text" name="lastname" value="{{ old('lastname') }}" class="form-control" placeholder="Apellidos">
+                            <input type="text" name="lastname" value="{{ $collaborator->lastname }}" class="form-control" placeholder="Apellidos">
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-12 col-md-6">
                         <div class="form-group">
                             <strong>Teléfono:</strong>
-                            <input type="text" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="Teléfono">
+                            <input type="text" name="phone" value="{{ $collaborator->phone }}" class="form-control" placeholder="Teléfono">
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-12 col-md-6">
                         <div class="form-group">
                             <strong>Correo eléctronico:</strong>
-                            <input type="text" name="email" value="{{ old('email') }}" class="form-control" placeholder="Correo eléctronico">
+                            <input type="text" name="email" value="{{ $collaborator->email }}" class="form-control" placeholder="Correo eléctronico">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="checkbox checkbox-success">
-                            <input name="status"  type="checkbox" value="1">
+                            <input name="status"  type="checkbox" 
+                            @if ($collaborator->status === 1)
+                               checked
+                           @endif
+                            >
                             <label for="1" style="padding-left: 15px!important;">Activo</label>
                         </div>
                     </div>
                     
                     <div class="col-xs-12 col-sm-12 col-md-12 text-right">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
                     </div>
                 </div>
         

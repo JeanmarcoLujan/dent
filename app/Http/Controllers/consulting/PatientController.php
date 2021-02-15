@@ -4,6 +4,7 @@ namespace App\Http\Controllers\consulting;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Patient;
 
 class PatientController extends Controller
 {
@@ -14,7 +15,8 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
+        $pacientes = Patient::all();
+        return view('consulting.patient.index', compact('pacientes'));
     }
 
     /**
@@ -24,7 +26,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        return view('consulting.patient.create');
     }
 
     /**
@@ -35,7 +37,20 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'dni'=>'required|unique:patients',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'birth'=>'required',
+            'sex'=>'required',
+            'phone'=>'required|numeric',
+            'email'=>'required|email',
+        ]);
+
+        Patient::create($request->all());
+     
+        return redirect()->route('paciente.index')
+                        ->with('success','El paciente se ha creado con éxito.');
     }
 
     /**
@@ -44,9 +59,9 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Patient $patient)
     {
-        //
+        return view('consulting.patient.show', compact('patient'));
     }
 
     /**
@@ -57,7 +72,8 @@ class PatientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $paciente = Patient::find($id);
+        return view('consulting.patient.edit', compact('paciente'));
     }
 
     /**
@@ -69,7 +85,20 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $hola = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'birth'=>'required',
+            'sex'=>'required',
+            'phone'=>'required|numeric',
+            'email'=>'required|email',
+            'apoderado'=>'',
+            'address'=>''
+        ]);
+
+        Patient::whereId($id)->update($hola);
+        return redirect()->route('paciente.index')
+                        ->with('success','El paciente se ha actualizado con éxito');
     }
 
     /**

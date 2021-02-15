@@ -25,7 +25,7 @@ class CreatePatientsTable extends Migration
             $table->string('phone', 20)->nullable();
             $table->string('email', 50)->nullable();
             $table->string('apoderado', 200)->nullable();
-            $table->integer('status');
+            $table->integer('status')->default('1');
             $table->timestamps();
         });
     }
