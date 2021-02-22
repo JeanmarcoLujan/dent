@@ -14,7 +14,10 @@ class CreateIndicatorsTable extends Migration
     public function up()
     {
         Schema::create('indicators', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('indicator', 15)->unique();
+            $table->date('indicatordate');
+            $table->unsignedInteger('patient_id');
             $table->timestamps();
         });
     }

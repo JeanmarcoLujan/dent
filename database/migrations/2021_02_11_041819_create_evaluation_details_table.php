@@ -15,6 +15,7 @@ class CreateEvaluationDetailsTable extends Migration
     {
         Schema::create('evaluation_details', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('diagnostic_id');
             $table->timestamps();
         });
     }

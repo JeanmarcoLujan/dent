@@ -14,7 +14,10 @@ class CreateEvaluationsTable extends Migration
     public function up()
     {
         Schema::create('evaluations', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('evaluation', 15)->unique();
+            $table->date('evaluationdate');
+            $table->unsignedInteger('entry_id');
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ class CreateIndicatorDetailsTable extends Migration
     {
         Schema::create('indicator_details', function (Blueprint $table) {
             $table->id();
+            $table->string('code', 10);
+            $table->integer('val');
             $table->timestamps();
         });
     }

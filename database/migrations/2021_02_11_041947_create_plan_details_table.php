@@ -15,6 +15,8 @@ class CreatePlanDetailsTable extends Migration
     {
         Schema::create('plan_details', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('diagnostic_id');
+            $table->string('description', 255)->nullable();
             $table->timestamps();
         });
     }
