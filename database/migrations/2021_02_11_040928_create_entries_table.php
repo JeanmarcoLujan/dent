@@ -19,7 +19,8 @@ class CreateEntriesTable extends Migration
             $table->date('entrydate');
             $table->string('antecedente', 255)->nullable();
             $table->string('motivo', 255)->nullable();
-            $table->string('descripcion', 255)->nullable();
+            $table->string('odontograma', 255)->nullable();
+            $table->integer('status')->default('1');
             $table->unsignedInteger('patient_id');
             $table->timestamps();
         });
