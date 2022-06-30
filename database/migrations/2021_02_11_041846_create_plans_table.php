@@ -18,6 +18,7 @@ class CreatePlansTable extends Migration
             $table->string('plan', 15)->unique();
             $table->date('plandate');
             $table->unsignedInteger('evaluation_id');
+            $table->integer('status')->default('1');
             $table->timestamps();
         });
     }

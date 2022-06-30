@@ -22,7 +22,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::resource('profile', '\App\Http\Controllers\profile\ProfileController');
+});
 
 Route::group(['middleware' => 'auth:sanctum', 'prefix' => 'administracion',], function () {
     Route::resource('especialidad', '\App\Http\Controllers\administration\SpecialtyController');

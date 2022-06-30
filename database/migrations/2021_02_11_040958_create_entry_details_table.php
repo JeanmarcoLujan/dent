@@ -18,6 +18,8 @@ class CreateEntryDetailsTable extends Migration
             $table->unsignedInteger('exam_id');
             $table->integer('values');
             $table->timestamps();
+
+            $table->foreign('exam_id')->referents('id')->on('exams')->onDelete("cascade");
         });
     }
 

@@ -23,6 +23,8 @@ class CreateEntriesTable extends Migration
             $table->integer('status')->default('1');
             $table->unsignedInteger('patient_id');
             $table->timestamps();
+
+            $table->foreign('patient_id')->referents('id')->on('patients');
         });
     }
 

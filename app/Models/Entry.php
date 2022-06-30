@@ -18,7 +18,7 @@ class Entry extends Model
         'entrydate',
         'antecedente',
         'motivo',
-        'descripcion',
+        'odontograma',
         'patient_id'
     ];
 
