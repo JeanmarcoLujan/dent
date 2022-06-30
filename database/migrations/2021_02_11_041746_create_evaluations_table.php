@@ -18,6 +18,7 @@ class CreateEvaluationsTable extends Migration
             $table->string('evaluation', 15)->unique();
             $table->date('evaluationdate');
             $table->unsignedInteger('entry_id');
+            $table->integer('status')->default('1');
             $table->timestamps();
         });
     }
